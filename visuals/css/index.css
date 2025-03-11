@@ -1,0 +1,39 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: lightgray;
+}
+
+.switchContainer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    transform: translate(-50%, -50%); top: 50%; left: 50%;
+    width: 1200px;
+    height: 600px;
+}
+
+.switchScreen {
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 40px;
+    border-color: black;
+    width: 800px;
+    background-color: gray;
+}
+
+.joystick {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+#joystickLeft {
+    border-radius: 100px 0px 0px 100px;
+    background-color: blue;
+}
+
+#joystickRight {
+    border-radius: 0px 100px 100px 0px;
+    background-color: red;
+}
