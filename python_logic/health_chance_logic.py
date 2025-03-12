@@ -1,3 +1,4 @@
+# health_chance_logic.py
 import random
 
 # Need to save the default value for percentage of damage
@@ -37,6 +38,7 @@ def damage():
         # Finally, the calculated number is added raw to the default chance.
         chance = ((1-(hp/hp_def))*clamp_max)+chance_def
 
+        # Simply decrements the HP value
         hp -= 2
 
 # Simply to test. Damage and catch are called 100 times each to see if the logic works proper
