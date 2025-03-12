@@ -14,6 +14,17 @@ body {
     animation: bodyAnim 30s ease infinite;
 }
 
+@keyframes bodyAnim {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 .switchContainer {
     display: flex;
@@ -34,34 +45,259 @@ body {
     background-color: rgb(48, 48, 48);
 }
 
-.joystick {
+.controller {
     display: flex;
     flex-direction: column;
     width: 200px;
 }
 
-#joystickLeft {
+#controllerLeft {
     border: 10px solid rgb(0, 180, 212);
     box-sizing: border-box;
     border-radius: 100px 10px 10px 100px;
     background-color: rgb(6,194,226);
 }
 
-#joystickRight {
+.conMinusButton {
+    background-color: rgb(27, 46, 66);
+    width: 50px; 
+    height: 15px; 
+    top: calc(50% - 7.5px); 
+    position: relative; 
+    border-radius: 4px; 
+    border-style: none;
+}
+
+.conJoystickLeft {
+    background-color: rgb(5, 0, 20);
+    width: 100px;
+    height: 100px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(27, 46, 66); 
+    box-sizing: border-box;
+}
+
+.conJoystickLeftInner {
+    background-color: rgb(12, 14, 30); 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    left: 6px; 
+    position: relative; 
+    box-sizing: border-box;
+}
+
+.conUpButton {
+    background-color: rgb(5, 0, 20);
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    border: 8px solid rgb(27, 46, 66);
+    box-sizing: border-box;
+}
+
+.conUpButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 26px; 
+    bottom: -15px; 
+    text-indent: -0.5px;
+}
+
+.conLeftButton {
+    background-color: rgb(5, 0, 20);
+    width: 50px;
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(27, 46, 66); 
+    box-sizing: border-box;
+}
+
+.conLeftButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 26px; 
+    bottom: -18px; 
+    text-indent: -4px;
+}
+
+.conRightButton {
+    background-color: rgb(5, 0, 20); 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(27, 46, 66); 
+    box-sizing: border-box;
+}
+
+.conRightButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 26px; 
+    bottom: -18px; 
+    text-indent: -3px;
+}
+
+.conDownButton {
+    background-color: rgb(5, 0, 20); 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(27, 46, 66); 
+    box-sizing: border-box;
+}
+
+.conDownButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 26px; 
+    bottom: -21px; 
+    text-indent: -0.5px;
+}
+
+.conCaptureButton {
+    background-color: rgb(5, 0, 20); 
+    width: 35px; 
+    height: 35px; 
+    border-radius: 20%; 
+    border: 6px solid rgb(27, 46, 66); 
+    box-sizing: border-box;
+}
+
+.conCaptureButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 30px; 
+    bottom: -14px; 
+    text-indent: -3px;
+}
+
+#controllerRight {
     border: 10px solid rgb(255, 70, 61);
     box-sizing: border-box;
     border-radius: 10px 100px 100px 10px;
     background-color: rgb(252,92,84);
 }
 
-@keyframes bodyAnim {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+.conPlusButtonVer {
+    background-color: rgb(75, 36, 36); 
+    width: 15px; 
+    height: 50px; 
+    right: calc(-15px - 2.5px); 
+    position: relative; 
+    border-radius: 4px;
+}
+
+.conPlusButtonHor {
+    background-color: rgb(75, 36, 36); 
+    width: 50px; 
+    height: 15px; 
+    top: calc(-50% - 7.5px); 
+    position: relative; 
+    border-radius: 4px;
+}
+
+.conXButton {
+    background-color: rgb(27, 4, 4); 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(75, 36, 36); 
+    box-sizing: border-box;
+}
+
+.conXButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 30px; 
+    bottom: -22px; 
+    text-indent: 3px;
+}
+
+.conYButton {
+    background-color: rgb(27, 4, 4); 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(75, 36, 36); 
+    box-sizing: border-box;
+}
+
+.conYButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 30px; 
+    bottom: -23px; 
+    text-indent: 3px;
+}
+
+.conAButton {
+    background-color: rgb(27, 4, 4);
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(75, 36, 36); 
+    box-sizing: border-box;
+}
+
+.conAButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 30px; 
+    bottom: -22.5px; 
+    text-indent: 3px;
+}
+
+.conBButton {
+    background-color: rgb(27, 4, 4); 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(75, 36, 36); 
+    box-sizing: border-box;
+}
+
+.conJoystickRight {
+    background-color: rgb(27, 4, 4); 
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    border: 8px solid rgb(75, 36, 36); 
+    box-sizing: border-box;
+}
+
+.conJoystickRightInner {
+    background-color: rgb(40, 15, 15);
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%;
+    left: 6px; 
+    position: relative; 
+    box-sizing: border-box;
+}
+
+.conHomeButton {
+    background-color: rgb(27, 4, 4); 
+    width: 35px; 
+    height: 35px; 
+    border-radius: 20%; 
+    border: 6px solid rgb(75, 36, 36); 
+    box-sizing: border-box;
+}
+
+.conHomeButton p {
+    position: absolute; 
+    color: gray; 
+    font-family: monospace; 
+    font-size: 30px; 
+    bottom: -13px; 
+    text-indent: -2.5px;
 }
