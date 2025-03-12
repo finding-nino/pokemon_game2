@@ -59,6 +59,10 @@ if ($result->num_rows > 0) {
             $hpColor = "red";
         }
 
+        if ($currentHP === $maxHP) {
+        $hpColor = "green"; // Zorg dat het altijd groen is bij volle HP
+        $hpPercentage = 100; // Healthbar is volledig gevuld
+        }
         
         $imagePath = "images/" . htmlspecialchars($row['Afbeelding']);
         echo "<div class='pokemon-container'>";
