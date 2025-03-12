@@ -3,6 +3,7 @@ body {
     margin: 0;
     background: rgb(26,69,255);
     background: radial-gradient(circle, rgba(26,69,255,1) 0%, rgba(16,13,126,1) 100%);
+    overflow: hidden;
 }
 
 .bodyOverlay1 {
@@ -68,6 +69,10 @@ body {
     border-style: none;
 }
 
+.conMinusButton:hover {
+    background-color: rgb(0, 60, 125);
+}
+
 .conJoystickLeft {
     background-color: rgb(5, 0, 20);
     width: 100px;
@@ -75,6 +80,11 @@ body {
     border-radius: 50%; 
     border: 8px solid rgb(27, 46, 66); 
     box-sizing: border-box;
+}
+
+.conJoystickLeft:hover {
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
 }
 
 .conJoystickLeftInner {
@@ -87,6 +97,11 @@ body {
     box-sizing: border-box;
 }
 
+.conJoystickLeft:hover .conJoystickLeftInner{
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
+}
+
 .conUpButton {
     background-color: rgb(5, 0, 20);
     width: 50px; 
@@ -94,6 +109,11 @@ body {
     border-radius: 50%;
     border: 8px solid rgb(27, 46, 66);
     box-sizing: border-box;
+}
+
+.conUpButton:hover {
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
 }
 
 .conUpButton p {
@@ -114,6 +134,11 @@ body {
     box-sizing: border-box;
 }
 
+.conLeftButton:hover {
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
+}
+
 .conLeftButton p {
     position: absolute; 
     color: gray; 
@@ -121,6 +146,11 @@ body {
     font-size: 26px; 
     bottom: -18px; 
     text-indent: -4px;
+}
+
+.conRightButton:hover {
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
 }
 
 .conRightButton {
@@ -150,6 +180,11 @@ body {
     box-sizing: border-box;
 }
 
+.conDownButton:hover {
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
+}
+
 .conDownButton p {
     position: absolute; 
     color: gray; 
@@ -168,6 +203,11 @@ body {
     box-sizing: border-box;
 }
 
+.conCaptureButton:hover {
+    background-color: rgb(0, 60, 125);
+    border-color: rgb(0, 60, 125);;
+}
+
 .conCaptureButton p {
     position: absolute; 
     color: gray; 
@@ -178,10 +218,29 @@ body {
 }
 
 #controllerRight {
-    border: 10px solid rgb(255, 70, 61);
+    border: 10px solid rgb(237, 64, 54);
     box-sizing: border-box;
     border-radius: 10px 100px 100px 10px;
-    background-color: rgb(252,92,84);
+    background-color: rgb(255, 67, 57);
+}
+
+.conPlusButtonContainer {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    border: none; 
+    padding: 0; 
+    background-color: rgb(255, 67, 57);
+}
+
+.conPlusButtonContainer:hover .conPlusButtonVer {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
+}
+
+.conPlusButtonContainer:hover .conPlusButtonHor {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
 }
 
 .conPlusButtonVer {
@@ -211,6 +270,11 @@ body {
     box-sizing: border-box;
 }
 
+.conXButton:hover {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
+}
+
 .conXButton p {
     position: absolute; 
     color: gray; 
@@ -227,6 +291,11 @@ body {
     border-radius: 50%; 
     border: 8px solid rgb(75, 36, 36); 
     box-sizing: border-box;
+}
+
+.conYButton:hover {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
 }
 
 .conYButton p {
@@ -247,6 +316,11 @@ body {
     box-sizing: border-box;
 }
 
+.conAButton:hover {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
+}
+
 .conAButton p {
     position: absolute; 
     color: gray; 
@@ -265,6 +339,11 @@ body {
     box-sizing: border-box;
 }
 
+.conBButton:hover {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
+}
+
 .conJoystickRight {
     background-color: rgb(27, 4, 4); 
     width: 100px; 
@@ -272,6 +351,11 @@ body {
     border-radius: 50%; 
     border: 8px solid rgb(75, 36, 36); 
     box-sizing: border-box;
+}
+
+.conJoystickRight:hover {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
 }
 
 .conJoystickRightInner {
@@ -284,6 +368,11 @@ body {
     box-sizing: border-box;
 }
 
+.conJoystickRight:hover .conJoystickRightInner {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
+}
+
 .conHomeButton {
     background-color: rgb(27, 4, 4); 
     width: 35px; 
@@ -291,6 +380,11 @@ body {
     border-radius: 20%; 
     border: 6px solid rgb(75, 36, 36); 
     box-sizing: border-box;
+}
+
+.conHomeButton:hover {
+    border-color: rgb(210, 42, 42);
+    background-color: rgb(210, 42, 42);
 }
 
 .conHomeButton p {
