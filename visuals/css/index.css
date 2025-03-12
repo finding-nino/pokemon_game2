@@ -178,10 +178,10 @@ body {
 }
 
 #controllerRight {
-    border: 10px solid rgb(255, 70, 61);
+    border: 10px solid rgb(237, 64, 54);
     box-sizing: border-box;
     border-radius: 10px 100px 100px 10px;
-    background-color: rgb(252,92,84);
+    background-color: rgb(255, 67, 57);
 }
 
 .conPlusButtonVer {
