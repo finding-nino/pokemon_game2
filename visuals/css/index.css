@@ -37,12 +37,8 @@ body {
 }
 
 .switchScreen {
-    border-radius: 10px;
-    box-sizing: border-box;
-    border-style: solid;
-    border-width: 40px;
-    border-color: black;
-    width: 800px;
+    width: 720px;
+    height: 520px;
     background-color: rgb(48, 48, 48);
 }
 
