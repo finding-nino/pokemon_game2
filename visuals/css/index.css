@@ -2,7 +2,7 @@ body {
     padding: 0;
     margin: 0;
     background: rgb(26,69,255);
-    background: radial-gradient(circle, rgba(26,69,255,1) 0%, rgba(16,13,126,1) 100%);
+    background: radial-gradient(49% 81% at 45% 47%, #FF03A045 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #0500FFFF 0%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #00FFFBFF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #00E0FFFF 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #1100FFFF 0%, #FF0000FF 100%);
     overflow: hidden;
 }
 
@@ -11,7 +11,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: rgb(222,86,1);
-    background: radial-gradient(circle, rgba(222,86,1,1) 0%, rgb(103, 10, 161) 100%);
+    background: radial-gradient(49% 81% at 45% 47%, #FF033145 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #6A00FF70 0%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #4700FFFF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #0048FFFF 47%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #0016FFFF 0%, #FF0000FF 100%);
     animation: bodyAnim 30s ease infinite;
 }
 
@@ -28,6 +28,9 @@ body {
 }
 
 .switchContainer {
+    border-radius: 110px 110px 110px 110px;
+    padding: 10px;
+    background-color: rgb(255, 229, 143);
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -40,7 +43,6 @@ body {
     width: 720px;
     height: 520px;
     background-color: rgb(48, 48, 48);
-    overflow: hidden;
 }
 
 .controller {
@@ -54,6 +56,22 @@ body {
     box-sizing: border-box;
     border-radius: 100px 10px 10px 100px;
     background-color: rgb(6,194,226);
+}
+
+.conLeftBumperButton {
+    background-color: rgb(27, 46, 66);
+    width: 125px; 
+    height: 125px; 
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    border-radius: 110px 10px 0px 10px; 
+    border: none; 
+    z-index: -1;
+}
+
+.conLeftBumperButton:hover {
+    background-color: rgb(0, 60, 125);
 }
 
 .conMinusButton {
@@ -221,6 +239,22 @@ body {
     background-color: rgb(255, 67, 57);
 }
 
+.conRightBumperButton {
+    background-color: rgb(75, 36, 36);
+    width: 125px; 
+    height: 125px; 
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+    border-radius: 10px 110px 10px 0px; 
+    border: none; 
+    z-index: -1;
+}
+
+.conRightBumperButton:hover {
+    background-color: rgb(210, 42, 42);
+}
+
 .conPlusButtonContainer {
     width: 50px; 
     height: 50px; 
@@ -231,12 +265,10 @@ body {
 }
 
 .conPlusButtonContainer:hover .conPlusButtonVer {
-    border-color: rgb(210, 42, 42);
     background-color: rgb(210, 42, 42);
 }
 
 .conPlusButtonContainer:hover .conPlusButtonHor {
-    border-color: rgb(210, 42, 42);
     background-color: rgb(210, 42, 42);
 }
 
