@@ -9,7 +9,7 @@ hp_def = hp
 chance = 0.1
 chance_def = chance
 
-# Scalar clamp. Chance will never go above this value, at least, it isn't intended to.
+# Scalar clamp. Chance will never go above this value + initial chance, at least, it isn't intended to.
 # Sometimes it will because we are simply adding but it will never go over far.
 clamp_max = 0.7
 
