@@ -29,4 +29,4 @@ if '%errorlevel%' NEQ '0' (
 title phpMyAdmin
 
 net start MYSQL91
-cd /d "%~dp0" && php -S localhost:8000
+cd /d "%~dp0" && php -S localhost:8002

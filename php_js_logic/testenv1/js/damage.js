@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
     const barWidth = 190; // Max width of the health bar in pixels
-    const damageAmount = 10; // Flat damage amount per attack
+    let damageAmount
 
     // Health bar element
     const healthBar = document.getElementById('healthbar');
@@ -36,10 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Attack button click event
         attackButton.addEventListener('click', () => {
-            if (currentHP > 0) {
+            damageAmount = Math.floor(Math.random() * 26 + 5);
+            if (currentHP > 0) { 
                 currentHP -= damageAmount; // Decrement currentHP
                 if (currentHP < 0) currentHP = 0; // Ensure HP doesn't go below 0
                 updateHealthBar(); // Update the health bar
+                
+                
             }
         });
 
