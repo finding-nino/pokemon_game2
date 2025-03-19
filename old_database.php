@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dbstyles.css">
     <title>Document</title>
+ 
+<button id= "attack_button">Aanvallen</button>
+
+
 </head>
 
 <script>
@@ -12,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let imgCells = document.querySelectorAll("td[data-img]"); // Alle cellen met een data-img attribuut zoeken
     
     imgCells.forEach(cell => {
-        let imgSrc = cell.getAttribute("data-img"); // Haal de afbeelding uit het attribuut
-        let imgTag = cell.querySelector(".pokemon-img"); // Selecteer de img-tag binnen de td
+        let imgSrc = cell.getAttribute("data-img"); // Afbeeldingen ophalen
+        let imgTag = cell.querySelector(".pokemon-img"); // Selecteer de img-tag 
         
         if (imgSrc) {
             imgTag.src = imgSrc; // Zet de afbeelding als bron
@@ -22,6 +26,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+
+let attack_button = document.getElementById('attack_button');
+
+attack_button.addEventListener('click', function(){
+    console.log('Aanval');
+})
+
+let pokemonHP = 100;
+
+let pkmn_attack = Math.floor((Math.random() * 26 + 5));
+
+let newHP = pokemonHP -= pkmn_attack;
+
+
+
+
 </script>
 
 <body>
@@ -46,18 +68,19 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $maxHP = 100; // Stel max HP in (aanpassen indien nodig)
+        $maxHP = (int) $row['Levens'] ?? 100; // Max HP uit database, standaard 100 als fallback
         $currentHP = (int) $row['Levens']; // Huidige HP uit database
-        $hpPercentage = ($currentHP / $maxHP) * 100; // Bereken percentage
+        $hpPercentage = max(0, min(($currentHP / $maxHP) * 100, 100)); // Zorg dat het tussen 0 en 100 blijft
 
-         // Bepaal kleur op basis van HP-percentage
-         if ($hpPercentage > 50) {
+        // Bepaal kleur op basis van HP-percentage
+        if ($hpPercentage > 50) {
             $hpColor = "green";
         } elseif ($hpPercentage > 20) {
             $hpColor = "orange";
         } else {
             $hpColor = "red";
         }
+
 
         if ($currentHP === $maxHP) {
         $hpColor = "green"; // Zorg dat het altijd groen is bij volle HP
@@ -72,19 +95,15 @@ if ($result->num_rows > 0) {
           // Healthbar
           echo "<div class='healthbar-container'>";
           echo "<div class='healthbar' style='width: {$hpPercentage}%; background-color: {$hpColor};'></div>";
-          echo "</div>";
-  
-          
-
-        
+          echo "</div>";       
        
-        echo "</div>";
     }
 }
 
 
+
+
 $conn->close();
 ?>
-
 </body>
 </html>
