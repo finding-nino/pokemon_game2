@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Attack button click event
         attackButton.addEventListener('click', () => {
-            damageAmount = Math.floor(Math.random() * 26 + 5);
+            damageAmount = Math.floor(Math.random() * (20 - 5) + 5);
             if (currentHP > 0) { 
                 currentHP -= damageAmount; // Decrement currentHP
                 if (currentHP < 0) currentHP = 0; // Ensure HP doesn't go below 0

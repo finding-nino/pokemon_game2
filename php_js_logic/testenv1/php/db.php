@@ -1,9 +1,9 @@
 <?php
 $host = 'localhost';
 $user = 'root';
-$pass = 'password';
-$dbname = 'db_pokemon';
-$tbname = 'tb_pokemon';
+$pass = 'root';
+$dbname = 'test';
+$tbname = 'testhp';
 
 try {
     $conn = new PDO("mysql:host=$host;port=3306;dbname=$dbname", $user, $pass);
@@ -12,7 +12,7 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-$sql = "SELECT id, Levens FROM $tbname";
+$sql = "SELECT id, hp FROM $tbname";
 $stmt = $conn->query($sql);
 
 // Fetch all the rows as an associative array

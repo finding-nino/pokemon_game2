@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function attemptCapture() {
         const randomChance = Math.random() * 100; // Generate a random number between 0 and 100
         if (randomChance <= captureChance) {
-            captureStatusElement.textContent = 'SUCCESS!';
+            captureStatusElement.textContent = 'IT WAS CAPTURED!';
             captureStatusElement.style.color = 'green';
         } else {
-            captureStatusElement.textContent = 'FAILED!';
+            captureStatusElement.textContent = 'IT RESISTED!';
             captureStatusElement.style.color = 'red';
         }
     }
