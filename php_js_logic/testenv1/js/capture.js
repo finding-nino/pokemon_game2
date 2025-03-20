@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
-    const chanceDef = 10; // Default capture chance (10%)
-    const clampMax = 70; // Difference between max chance (80%) and default chance (10%)
+    const chanceDef = 0.05; // Default capture chance (10%)
+    const clampMax = 0.75; // Difference between max chance (80%) and default chance (10%)
 
     // Capture status element
     const captureStatusElement = document.getElementById('capturestatus');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to handle capture attempt
     function attemptCapture() {
-        const randomChance = Math.random() * 100; // Generate a random number between 0 and 100
+        const randomChance = Math.random(); // Generate a random number between 0 and 100
         if (randomChance <= captureChance) {
             captureStatusElement.textContent = 'IT WAS CAPTURED!';
             captureStatusElement.style.color = 'green';

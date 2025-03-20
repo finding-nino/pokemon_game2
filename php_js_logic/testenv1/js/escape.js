@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
-    const baseEscapeChance = 0.015; // Base escape chance (5%)
+    const baseEscapeChance = 0.015; // Base escape chance (1.5%)
     let escapeCounter = 0; // Counter for escape opportunities
 
     // Escape status element
