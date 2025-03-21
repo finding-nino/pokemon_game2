@@ -1,5 +1,6 @@
 import { getCookie } from "./cookieUtils/getCookie.js";
 import { setCookie } from "./cookieUtils/setCookie.js";
+import { reloadAndDisable } from "./reload.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
@@ -34,9 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (randomChance <= captureChance) {
             captureStatusElement.textContent = 'IT WAS CAPTURED!';
             captureStatusElement.style.color = 'green';
+            reloadAndDisable();
         } else {
             captureStatusElement.textContent = 'IT RESISTED!';
             captureStatusElement.style.color = 'red';
+            reloadAndDisable();
         }
     }
 

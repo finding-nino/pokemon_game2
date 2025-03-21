@@ -1,5 +1,6 @@
 import { setCookie } from './cookieUtils/setCookie.js';
 import { getCookie } from './cookieUtils/getCookie.js';
+import { reloadAndDisable } from './reload.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
@@ -46,7 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
             damageAmount = Math.floor(Math.random() * (20 - 5) + 5); // Random damage between 5 and 20
             if (currentHP > 0) {
                 currentHP -= damageAmount; // Decrement currentHP
-                if (currentHP < 0) currentHP = 0; // Ensure HP doesn't go below 0
+                if (currentHP < 0) {
+                    currentHP = 0;
+                    reloadAndDisable();
+                } // Ensure HP doesn't go below 0
                 setCookie('currentHP', currentHP, 1);
                 updateHealthBar(); // Update the health bar
             }

@@ -1,4 +1,5 @@
 import { setCookie } from "./cookieUtils/setCookie.js";
+import { reloadAndDisable } from "./reload.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (randomChance <= escapeChance) {
             escapeStatusElement.textContent = 'IT ESCAPED!';
             escapeStatusElement.style.color = 'red';
+            reloadAndDisable();
         } else {
             escapeStatusElement.textContent = 'IT STAYED!';
             escapeStatusElement.style.color = 'green';
