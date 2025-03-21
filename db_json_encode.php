@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
-$sql = "SELECT Naam, Levens, Afbeelding FROM tb_pokemon";
+$sql = "SELECT * FROM tb_pokemon ORDER BY RAND()";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -29,3 +29,4 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
