@@ -1,7 +1,11 @@
+import { setCookie } from './cookieUtils/setCookie.js';
+import { getCookie } from './cookieUtils/getCookie.js';
+import { reloadAndDisable } from './reload.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
     const barWidth = 190; // Max width of the health bar in pixels
-    let damageAmount
+    let damageAmount;
 
     // Health bar element
     const healthBar = document.getElementById('healthbar');
@@ -12,10 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Current HP element
     const currentHPElement = document.getElementById('currenthp');
 
+    // Max HP element
+    const maxHPElement = document.getElementById('maxhp');
+
     // Function to initialize health bar functionality
     function initializeHealthBar() {
-        let maxHP = parseInt(document.getElementById('maxhp').textContent.split(' ')[2]); // Get maxHP from the populated HP element
+        let maxHP = getCookie('maxHP');
         let currentHP = maxHP; // Initialize currentHP to maxHP
+        setCookie('currentHP', currentHP, 1);
 
         // Function to update the health bar width
         function updateHealthBar() {
@@ -36,13 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Attack button click event
         attackButton.addEventListener('click', () => {
-            damageAmount = Math.floor(Math.random() * (20 - 5) + 5);
-            if (currentHP > 0) { 
+            damageAmount = Math.floor(Math.random() * (20 - 5) + 5); // Random damage between 5 and 20
+            if (currentHP > 0) {
                 currentHP -= damageAmount; // Decrement currentHP
-                if (currentHP < 0) currentHP = 0; // Ensure HP doesn't go below 0
+                if (currentHP < 0) {
+                    currentHP = 0;
+                    reloadAndDisable();
+                } // Ensure HP doesn't go below 0
+                setCookie('currentHP', currentHP, 1);
                 updateHealthBar(); // Update the health bar
-                
-                
             }
         });
 
@@ -50,22 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateHealthBar();
     }
 
-    // Observe changes to the #hp element
-    const hpElement = document.getElementById('maxhp');
+    // Observe changes to the #maxhp element
     const observer = new MutationObserver((mutationsList) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type === 'characterData' || mutation.type === 'childList') {
-                // Check if the textContent now contains a valid HP value
-                if (hpElement.textContent.includes('MAX HP: ') && !isNaN(parseInt(hpElement.textContent.split(' ')[2]))) {
-                    initializeHealthBar(); // Initialize health bar functionality
-                    observer.disconnect(); // Stop observing once the HP value is set
-                }
-            }
-        }
+        initializeHealthBar(); // Initialize health bar functionality
+        observer.disconnect(); // Stop observing once the HP value is set
     });
 
-    // Start observing the #hp element for changes
-    observer.observe(hpElement, {
+    // Start observing the #maxhp element for changes
+    observer.observe(maxHPElement, {
         childList: true, // Observe changes to child nodes
         characterData: true, // Observe changes to text content
         subtree: true // Observe all descendants
