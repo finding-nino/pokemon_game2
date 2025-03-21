@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             captureStatusElement.textContent = 'IT RESISTED!';
             captureStatusElement.style.color = 'red';
-            reloadAndDisable();
         }
     }
 
