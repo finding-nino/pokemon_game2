@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             damageAmount = Math.floor(Math.random() * (20 - 5) + 5); // Random damage between 5 and 20
             if (currentHP > 0) {
                 currentHP -= damageAmount; // Decrement currentHP
-                if (currentHP < 0) {
+                if (currentHP <= 0) {
                     currentHP = 0;
                     reloadAndDisable();
                 } // Ensure HP doesn't go below 0
