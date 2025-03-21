@@ -1,3 +1,6 @@
+import { getCookie } from "./cookieUtils/getCookie.js";
+import { setCookie } from "./cookieUtils/setCookie.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
     const chanceDef = 0.05; // Default capture chance (10%)
@@ -12,20 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Current HP element
     const currentHPElement = document.getElementById('currenthp');
 
-    // Current HP element
-    const maxHPElement = document.getElementById('maxhp');
-
     // Variables
-    let maxHP
+    let maxHP;
     let captureChance;
 
     // Function to calculate capture chance
     function calculateCaptureChance() {
-        const currentHP = parseFloat(currentHPElement.textContent.split(':')[1].trim());
+        const currentHP = parseFloat(getCookie('currentHP'));
         captureChance = ((1 - (currentHP / maxHP)) * clampMax) + chanceDef;
+        setCookie('captureChance', captureChance, 1)
     }
 
-    calculateCaptureChance(); // Calculate initial capture chance
+    //calculateCaptureChance(); // Calculate initial capture chance
 
     // Function to handle capture attempt
     function attemptCapture() {
@@ -40,38 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Observe changes to the #currenthp element
-    const observerHPCurrent = new MutationObserver((mutationsList) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type === 'characterData' || mutation.type === 'childList') {
-                // Check if the textContent now contains a valid HP value
-                if (currentHPElement.textContent.includes('CURRENT HP: ') && !isNaN(parseFloat(currentHPElement.textContent.split(':')[1].trim()))) {
-                    calculateCaptureChance(); // Recalculate capture chance
-                }
-            }
-        }
+    const observer = new MutationObserver((mutationsList) => {
+        maxHP = parseInt(getCookie('maxHP'));
+        calculateCaptureChance(); // Recalculate capture chance
     });
 
     // Start observing the #currenthp element for changes
-    observerHPCurrent.observe(currentHPElement, {
-        childList: true, // Observe changes to child nodes
-        characterData: true, // Observe changes to text content
-        subtree: true // Observe all descendants
-    });
-
-    const observerHPMax = new MutationObserver((mutationsList) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type === 'characterData' || mutation.type === 'childList') {
-                // Check if the textContent now contains a valid HP value
-                if (maxHPElement.textContent.includes('MAX HP: ') && !isNaN(parseInt(maxHPElement.textContent.split(' ')[2]))) {
-                    maxHP = parseInt(document.getElementById('maxhp').textContent.split(' ')[2]); // Get maxHP from the populated HP element
-                    observerHPMax.disconnect(); // Stop observing once the HP value is set
-                }
-            }
-        }
-    });
-
-    // Start observing the #hp element for changes
-    observerHPMax.observe(maxHPElement, {
+    observer.observe(currentHPElement, {
         childList: true, // Observe changes to child nodes
         characterData: true, // Observe changes to text content
         subtree: true // Observe all descendants

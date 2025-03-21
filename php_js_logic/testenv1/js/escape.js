@@ -1,3 +1,5 @@
+import { setCookie } from "./cookieUtils/setCookie.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
     const baseEscapeChance = 0.015; // Base escape chance (1.5%)
@@ -19,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkForEscape() {
         const escapeChance = calculateEscapeChance();
         const randomChance = Math.random(); // Generate a random number between 0 and 1
+
+        setCookie('escapeChance', escapeChance, 1)
 
         if (randomChance <= escapeChance) {
             escapeStatusElement.textContent = 'IT ESCAPED!';
