@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Max HP element
     const maxHPElement = document.getElementById('maxhp');
 
+    // Escape status
+    const escapeStatusElement = document.getElementById('escapestatus');
+
     // Function to initialize health bar functionality
     function initializeHealthBar() {
         let maxHP = getCookie('maxHP');
@@ -49,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentHP -= damageAmount; // Decrement currentHP
                 if (currentHP <= 0) {
                     currentHP = 0;
+                    escapeStatusElement.textContent = 'IT IS DEAD!';
+                    escapeStatusElement.style.color = 'red';
                     reloadAndDisable();
                 } // Ensure HP doesn't go below 0
                 setCookie('currentHP', currentHP, 1);
