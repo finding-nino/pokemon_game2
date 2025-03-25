@@ -11,9 +11,7 @@
 
     <div style="width: 1220px; height: 400px; background-color: rgb(255, 204, 121); position: absolute; -webkit-transform: translate(-50%, 0%); -moz-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); -o-transform: translate(-50%, 0%); transform: translate(-50%, 0%); ; top: 50%; left: 50%; border-radius: 100px 100px 100px 100px; box-sizing: border-box; border: 10px solid rgb(255, 229, 143);">
         <div style="height: 115px; top: 175px; margin: 50px;  position: relative; display: flex;">
-            <p style="font-family: monospace; font-size: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 0;">TEST ASDHASDKSHASKH</p>
-            <p style="font-family: monospace; font-size: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 0;">TEST ASDHASDKSHASKH</p>
-            <p style="font-family: monospace; font-size: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 0;">TEST ASDHASDKSHASKH</p>
+            <p style="font-family: monospace; font-size: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 0;">BLUE JOYSTICK - Attempt capture<br>RED JOYSTICK - Damage Pokemon</p>
         </div>
     </div>
     
@@ -26,7 +24,7 @@
                 <button class="conMinusButton"></button>
             </div>
             <div style="width: 150px; height: 100px; margin-top: 25px; -webkit-transform: translate(-50%, 0%); -moz-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); -o-transform: translate(-50%, 0%); transform: translate(-50%, 0%); ; left: 50%; position: relative; display: flex; justify-content: space-around;">
-                <button class="conJoystickLeft">
+                <button id="captureEntity" class="conJoystickLeft">
                     <div class="conJoystickLeftInner"></div>
                 </button>
             </div>
@@ -56,11 +54,17 @@
         </div>
 
         <div style="width: 800px; height: 600px; border-radius: 10px; border: 40px black solid; box-sizing: border-box; z-index: 1;">
-            <div class="switchScreen"></div>
+            <div class="switchScreen">
+                <div id="entityName" style="width: 375px; height: 30px; line-height: 30px; text-align: center; border: white solid; border-width: 3px 0px 3px 0px;">entityName</div>
+                <img id="entityVisual" style="margin-top: 10px; width: 375px; height: 375px; background-color: rgb(53, 59, 69); border: white solid; border-width: 2px; box-sizing: border-box;"></img>
+                <div style="margin-top: 20px; width: 500px; height: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: white solid; border-width: 3px 0px 3px 0px;">
+                    <div id="entityHealthbar" style="width: 500px; height: 30px; background-color: green; line-height: 30px; text-align: center;">currentHP/maxHP</div>
+                </div>
+            </div>
         </div>
 
         <div class="controller" id="controllerRight">
-            <div style="position: absolute; top: -10px; right: -10px; border: 10px rgb(255, 229, 143) solid; width: 125px; height: 125px; z-index: -1; border-radius: 20px 120px 20px 0px;">
+            <div style="position: absolute; top: -10px; right: -10px; border: 10px rgb(187, 187, 187) solid; width: 125px; height: 125px; z-index: -1; border-radius: 20px 120px 20px 0px;">
                 <button class="conRightBumperButton"></button>
             </div>
             <div style="width: 150px; height: 50px; margin-top: 25px; -webkit-transform: translate(-50%, 0%); -moz-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); -o-transform: translate(-50%, 0%); transform: translate(-50%, 0%); ; left: 50%; position: relative; display: flex;">
@@ -88,7 +92,7 @@
                 </button>
             </div>
             <div style="width: 150px; height: 100px; margin-top: 75px; -webkit-transform: translate(-50%, 0%); -moz-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); -o-transform: translate(-50%, 0%); transform: translate(-50%, 0%); ; left: 50%; position: relative; display: flex; justify-content: space-around;">
-                <button class="conJoystickRight">
+                <button id="damageEntity" class="conJoystickRight">
                     <div class="conJoystickRightInner"></div>
                 </button>
             </div>

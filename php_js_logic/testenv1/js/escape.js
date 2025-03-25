@@ -3,7 +3,7 @@ import { reloadAndDisable } from "./reload.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
-    const baseEscapeChance = 0.015; // Base escape chance (1.5%)
+    const baseEscapeChance = 0.01; // Base escape chance (1%)
     let escapeCounter = 0; // Counter for escape opportunities
 
     // Escape status element
@@ -15,13 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to calculate escape chance
     function calculateEscapeChance() {
-        return 1 - 1 / (1 + baseEscapeChance * escapeCounter);
+        return (1 - 1 / (1 + baseEscapeChance * escapeCounter));
     }
+
+    // Calculate initial escape chance and set first cookie
+    let escapeChance = calculateEscapeChance();
+    setCookie('escapeChance', escapeChance, 1);
 
     // Function to check for escape
     function checkForEscape() {
-        const escapeChance = calculateEscapeChance();
-        const randomChance = Math.random(); // Generate a random number between 0 and 1
+        escapeChance = calculateEscapeChance();
+        const randomChance = Math.random();
 
         setCookie('escapeChance', escapeChance, 1)
 

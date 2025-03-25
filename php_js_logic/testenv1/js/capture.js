@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setCookie('captureChance', captureChance, 1)
     }
 
-    //calculateCaptureChance(); // Calculate initial capture chance
+    calculateCaptureChance(); // Calculate initial capture chance
 
     // Function to handle capture attempt
     function attemptCapture() {
