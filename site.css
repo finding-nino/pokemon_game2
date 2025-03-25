@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+a:link{
+    color:skyblue;
+}
+
+a:visited{
+    color:skyblue;
+}
+
+#gif-container{
+   
+}
