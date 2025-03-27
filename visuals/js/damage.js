@@ -4,11 +4,17 @@ import { reloadAndDisable } from './reload.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
-    const barWidth = 500; // Max width of the health bar in pixels
+    const barWidth = 502; // Max width of the health bar in pixels
     let damageAmount;
 
     // Health bar element
     const healthBar = document.getElementById('entityHealthbar');
+    
+    // Max HP element
+    const maxHPElement = document.getElementById('maxHP');
+    
+    // Current HP element
+    const currentHPElement = document.getElementById('currentHP');
 
     // Attack button
     const attackButton = document.getElementById('damageEntity');
@@ -27,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const newWidth = barWidth * (currentHP / maxHP); // Calculate new width
             healthBar.style.width = `${newWidth}px`; // Update health bar width
 
-            healthBar.textContent = `${maxHP} / ${currentHP}`;
+            maxHPElement.textContent = `${maxHP}`;
+            currentHPElement.textContent = `${currentHP}`;
 
             // Change color based on health percentage  
             if (newWidth <= barWidth * 0.25) {
@@ -57,17 +64,4 @@ document.addEventListener('DOMContentLoaded', () => {
         updateHealthBar();
     }
     initializeHealthBar();
-
-/*     // Observe changes to the #maxhp element
-    const observer = new MutationObserver((mutationsList) => {
-        initializeHealthBar(); // Initialize health bar functionality
-        observer.disconnect(); // Stop observing once the HP value is set
-    });
-
-    // Start observing the #maxhp element for changes
-    observer.observe(maxHPElement, {
-        childList: true, // Observe changes to child nodes
-        characterData: true, // Observe changes to text content
-        subtree: true // Observe all descendants
-    }); */
 });
