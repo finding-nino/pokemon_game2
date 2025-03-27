@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 // Database configuration
 $servername = "localhost";
 $username = "root";
-$password = "password";
+$password = "root";
 $dbname = "db_pokemon";
 
 // Get the posted data

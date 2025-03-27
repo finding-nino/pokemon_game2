@@ -2,7 +2,7 @@
 // Database connection
 $servername = "localhost";
 $username = "root";
-$password = "password";
+$password = "root";
 $dbname = "db_pokemon";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

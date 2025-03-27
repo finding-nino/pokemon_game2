@@ -37,8 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setCookie('escapeChance', escapeChance, 1);
 
     // Function to check for escape
-    function checkForEscape() {
-        escapeChance = calculateEscapeChance();
+    function checkForEscape(bShouldCheck) {
+        if (bShouldCheck == 1) {
+            escapeChance = calculateEscapeChance();
+        }
         const randomChance = Math.random();
 
         setCookie('escapeChance', escapeChance, 1)
@@ -55,32 +57,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to increment escape counter and check for escape
     function handleEscapeOpportunity() {
         escapeCounter++; // Increment the escape counter
-        checkForEscape(); // Check for escape
+        checkForEscape(1); // Check for escape
     }
 
     // Function to initialize health bar functionality
     function initializeEscapeBar() {
-        let escapeChance = getCookie('escapeChance') * 7;
-
-
-
+        let escapeChance = Math.min(getCookie('escapeChance') * 7, barHeight); // Ensure escapeChance doesn't exceed 1
 
         // Function to update the health bar width
         function updateEscapeBar() {
-            let newBarHeigth = escapeChance * barHeight;
-            escapeBar.style.height = `${newBarHeigth}px`; // Update capture bar
+            // Calculate new height, but don't exceed barHeight
+            let newBarHeight = Math.min(escapeChance * barHeight, barHeight);
+            escapeBar.style.height = `${newBarHeight}px`; // Update escape bar
 
+            if (newBarHeight == barHeight) {
+                entityStatusElement.textContent = 'It escaped!';
+                maxHPElement.textContent = '';
+                currentHPElement.textContent = '';
+                healthBar.style.width = '0px';
+                reloadAndDisable();
+            }
 
             // Change color based on health percentage  
-            if (newBarHeigth <= barHeight * 0.35) {
+            if (newBarHeight <= barHeight * 0.35) {
                 escapeBar.style.backgroundColor = 'green'; // Low health
-            } else if (newBarHeigth <= barHeight * 0.65) {
+            } else if (newBarHeight <= barHeight * 0.65) {
                 escapeBar.style.backgroundColor = 'orange'; // Medium health
             } else {
                 escapeBar.style.backgroundColor = 'red'; // High health
             }
         }
-
 
         // Initialize health bar on page load
         updateEscapeBar();
