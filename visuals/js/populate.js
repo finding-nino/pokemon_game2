@@ -9,6 +9,7 @@ fetch('php/db_json_encode.php')
         } else {
             setCookie('maxHP', data.Levens, 1);
             setCookie('entityID', data.id, 1);
+            setCookie('captureAmount', data.Gevangen, 1);
             
             document.getElementById('entityName').textContent = data.Naam;
             

@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Variables
     let maxHP;
     let captureChance;
+    let captureAmount = parseInt(getCookie('captureAmount'));
 
     // Function to calculate capture chance
     function calculateCaptureChance() {
@@ -40,15 +41,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setCookie('captureChance', chanceDef, 1);
 
+    // This function sends your counter to the PHP backend
+    function updateCounterInDatabase() {
+        // Create an object with your data
+        const data = {
+            id: getCookie('entityID'),
+            counter: captureAmount
+        };
+
+        // Send the data to your PHP script using fetch API
+        fetch('./php/db_update_counter.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
     // Function to handle capture attempt
     function attemptCapture() {
         const randomChance = Math.random(); // Generate a random number between 0 and 100
         if (randomChance <= captureChance) {
+            captureAmount += 1;
             entityStatusElement.textContent = 'You captured it!';
             maxHPElement.textContent = '';
             currentHPElement.textContent = '';
             healthBar.style.width = '0px';
             reloadAndDisable();
+            updateCounterInDatabase(123, 42); // Updates record with ID 123 to counter value 42
         }
     }
 
@@ -101,5 +129,4 @@ document.addEventListener('DOMContentLoaded', () => {
     attackButton.addEventListener('click', () => {
         initializeCaptureBar(); // Update the health bar
     });
-
 });
