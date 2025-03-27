@@ -54,6 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // This function sends your counter to the PHP backend
+    function updateCounterInDatabase() {
+        // Create an object with your data
+        const data = {
+            id: getCookie('entityID'),
+            counter: parseInt(getCookie('captureAmount')) - 1
+        };
+
+        // Send the data to your PHP script using fetch API
+        fetch('./php/db_update_counter.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
     // Function to increment escape counter and check for escape
     function handleEscapeOpportunity() {
         escapeCounter++; // Increment the escape counter
@@ -76,6 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentHPElement.textContent = '';
                 healthBar.style.width = '0px';
                 reloadAndDisable();
+                if (parseInt(getCookie('bHasBeencaptured')) == 1) {
+                    updateCounterInDatabase();
+                }
             }
 
             // Change color based on health percentage  

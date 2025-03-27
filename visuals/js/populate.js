@@ -1,6 +1,8 @@
 import { getCookie } from './cookieUtils/getCookie.js';
 import { setCookie } from './cookieUtils/setCookie.js';
 
+setCookie('bHasBeenCaptured', 0, 1);
+
 fetch('php/db_json_encode.php')
     .then(response => response.json())
     .then(data => {

@@ -75,8 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
             maxHPElement.textContent = '';
             currentHPElement.textContent = '';
             healthBar.style.width = '0px';
+            setCookie('bHasBeenCaptured', 1, 1)
             reloadAndDisable();
-            updateCounterInDatabase(123, 42); // Updates record with ID 123 to counter value 42
+            updateCounterInDatabase();
         }
     }
 
