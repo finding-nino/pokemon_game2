@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Attack button
     const attackButton = document.getElementById('damageEntity');
 
-    // Escape status
-    const escapeStatusElement = document.getElementById('escapestatus');
+    const entityStatusElement = document.getElementById('entityStatusInsertionPoint');
 
     // Function to initialize health bar functionality
     function initializeHealthBar() {
@@ -32,9 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateHealthBar() {
             const newWidth = barWidth * (currentHP / maxHP); // Calculate new width
             healthBar.style.width = `${newWidth}px`; // Update health bar width
-
-            maxHPElement.textContent = `${maxHP}`;
-            currentHPElement.textContent = `${currentHP}`;
+            if (currentHP > 0) {
+                maxHPElement.textContent = `${maxHP}`;
+                currentHPElement.textContent = `${currentHP}`;
+            }
 
             // Change color based on health percentage  
             if (newWidth <= barWidth * 0.25) {
@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentHP -= damageAmount; // Decrement currentHP
                 if (currentHP <= 0) {
                     currentHP = 0;
+                    entityStatusElement.textContent = 'It Fainted!';
+                    maxHPElement.textContent = '';
+                    currentHPElement.textContent = '';
+                    healthBar.style.width = '0px';
                     reloadAndDisable();
                 } // Ensure HP doesn't go below 0
                 setCookie('currentHP', currentHP, 1);

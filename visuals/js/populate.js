@@ -14,7 +14,7 @@ fetch('php/db_json_encode.php')
             
             let gifElement = document.getElementById('entityVisual');
             if (data.Afbeelding) {
-                gifElement.src = data.Afbeelding;
+                gifElement.src = "images/" + data.Afbeelding;
             } else {
                 gifElement.alt = "Geen afbeelding beschikbaar";
             }

@@ -2,7 +2,7 @@
 // Database connection
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "password";
 $dbname = "db_pokemon";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,8 +18,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
-    // Prepend the path to the Afbeelding field
-    $row['Afbeelding'] = '/images/' . $row['Afbeelding'];
+   
 
     // Send the JSON response
     echo json_encode($row);
