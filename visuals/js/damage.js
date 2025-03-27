@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Health bar element
     const healthBar = document.getElementById('entityHealthbar');
+
+    const escapeBar = document.getElementById("escapeBar")
+    const captureBar = document.getElementById("captureBar")
     
     // Max HP element
     const maxHPElement = document.getElementById('maxHP');
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     maxHPElement.textContent = '';
                     currentHPElement.textContent = '';
                     healthBar.style.width = '0px';
+                    captureBar.style.height = '0px';
                     reloadAndDisable();
                 } // Ensure HP doesn't go below 0
                 setCookie('currentHP', currentHP, 1);

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const captureButton = document.getElementById('captureEntity');
 
     const escapeBar = document.getElementById("escapeBar")
+    const captureBar = document.getElementById("captureBar")
 
     // Function to calculate escape chance
     function calculateEscapeChance() {
@@ -50,16 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
             maxHPElement.textContent = '';
             currentHPElement.textContent = '';
             healthBar.style.width = '0px';
+            captureBar.style.height = '0px';
+            escapeBar.style.height = '0px';
             reloadAndDisable();
         }
     }
+
+    let captureAmount = parseInt(getCookie('captureAmount'));
 
     // This function sends your counter to the PHP backend
     function updateCounterInDatabase() {
         // Create an object with your data
         const data = {
             id: getCookie('entityID'),
-            counter: parseInt(getCookie('captureAmount')) - 1
+            counter: captureAmount
         };
 
         // Send the data to your PHP script using fetch API
@@ -91,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Function to update the health bar width
         function updateEscapeBar() {
+            let currentHP = parseInt(getCookie('currentHP'));
             // Calculate new height, but don't exceed barHeight
             let newBarHeight = Math.min(escapeChance * barHeight, barHeight);
             escapeBar.style.height = `${newBarHeight}px`; // Update escape bar
@@ -101,10 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentHPElement.textContent = '';
                 healthBar.style.width = '0px';
                 reloadAndDisable();
-                if (parseInt(getCookie('bHasBeencaptured')) == 1) {
+                window.addEventListener('entityCaptured', () => {
+                    captureAmount -= 1;
                     updateCounterInDatabase();
-                }
+                });
             }
+
+            if (currentHP <= 0) {
+                escapeBar.style.height = '0px';
+            }
+
 
             // Change color based on health percentage  
             if (newBarHeight <= barHeight * 0.35) {
@@ -124,12 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listeners to the buttons
     attackButton.addEventListener('click', function() {
-        handleEscapeOpportunity();
         initializeEscapeBar();
+        handleEscapeOpportunity();
     });
     captureButton.addEventListener('click', function() {
-        handleEscapeOpportunity();
         initializeEscapeBar();
+        handleEscapeOpportunity();
     });
 
      

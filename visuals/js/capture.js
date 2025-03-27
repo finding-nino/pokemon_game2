@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentHPElement = document.getElementById('currentHP');
 
     const captureBar = document.getElementById("captureBar");
+    const escapeBar = document.getElementById("escapeBar");
 
     const attackButton = document.getElementById("damageEntity")
 
@@ -40,6 +41,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setCookie('captureChance', chanceDef, 1);
+
+    // Function to initialize health bar functionality
+    function initializeCaptureBar() {
+        let captureChance = getCookie('captureChance');
+
+
+
+        // Function to update the health bar width
+        function updateCaptureBar() {
+            let newBarHeigth = captureChance * barHeight;
+            captureBar.style.height = `${newBarHeigth}px`; // Update capture bar
+
+
+            // Change color based on health percentage  
+            if (newBarHeigth <= barHeight * 0.35) {
+                captureBar.style.backgroundColor = 'red'; // Low health
+            } else if (newBarHeigth <= barHeight * 0.65) {
+                captureBar.style.backgroundColor = 'orange'; // Medium health
+            } else {
+                captureBar.style.backgroundColor = 'green'; // High health
+            }
+        }
+
+
+        // Initialize health bar on page load
+        updateCaptureBar();
+    }
+    initializeCaptureBar();
+
+    // Attack button click event
+    attackButton.addEventListener('click', () => {
+        initializeCaptureBar(); // Update the health bar
+    });
 
     // This function sends your counter to the PHP backend
     function updateCounterInDatabase() {
@@ -75,7 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
             maxHPElement.textContent = '';
             currentHPElement.textContent = '';
             healthBar.style.width = '0px';
-            setCookie('bHasBeenCaptured', 1, 1)
+            captureBar.style.height = '0px';
+            escapeBar.style.height = '0px';
+            window.dispatchEvent(new CustomEvent('entityCaptured'));
             reloadAndDisable();
             updateCounterInDatabase();
         }
@@ -96,38 +132,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Capture button click event
     captureButton.addEventListener('click', attemptCapture);
-
-
-    // Function to initialize health bar functionality
-    function initializeCaptureBar() {
-        let captureChance = getCookie('captureChance');
-
-
-
-        // Function to update the health bar width
-        function updateCaptureBar() {
-            let newBarHeigth = captureChance * barHeight;
-            captureBar.style.height = `${newBarHeigth}px`; // Update capture bar
-
-
-            // Change color based on health percentage  
-            if (newBarHeigth <= barHeight * 0.35) {
-                captureBar.style.backgroundColor = 'red'; // Low health
-            } else if (newBarHeigth <= barHeight * 0.65) {
-                captureBar.style.backgroundColor = 'orange'; // Medium health
-            } else {
-                captureBar.style.backgroundColor = 'green'; // High health
-            }
-        }
-
-
-        // Initialize health bar on page load
-        updateCaptureBar();
-    }
-    initializeCaptureBar();
-
-    // Attack button click event
-    attackButton.addEventListener('click', () => {
-        initializeCaptureBar(); // Update the health bar
-    });
 });
