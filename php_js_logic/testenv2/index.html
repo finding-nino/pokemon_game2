@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon mechanics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="body">
+    
+    <div style="transform: scale(1.5);">
+        <img></img>
+        
+        <div class="hp_id_container">
+            <div id="maxhp" style="text-align: center;">MAX HP: </div>
+            <div id="currenthp" style="text-align: center;">| CURRENT HP: </div>
+            <div id="id" style="text-align: center;">| ID: </div>
+        </div>
+        
+        <div style="width: 200px; height: 20px; background-color: white; display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+            <div id="healthbar" style="height: 10px; background-color: green;"></div>
+        </div>
+        
+        <div style="width: 200px; height: 20px; display: flex; justify-content: space-between; margin-top: 10px;">
+            <button id="attack">ATTACK</button>
+            <button id="capture">CAPTURE</button>
+        </div>
+        <div id="escapestatus" style="width: 200px; height: 20px; text-align: center; margin-top: 10px; color: white;"></div>
+        <div id="capturestatus" style="width: 200px; height: 20px; text-align: center; margin-top: 10px; color: white;"></div>
+    </div>
+
+    <script type="module" src="js/reload.js"></script>
+    <script type="module" src="js/populate.js"></script>
+    <script type="module" src="js/damage.js"></script>
+    <script type="module" src="js/capture.js"></script>
+    <script type="module" src="js/escape.js"></script>
+
+</body>
+</html>

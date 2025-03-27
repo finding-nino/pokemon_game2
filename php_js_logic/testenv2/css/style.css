@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(28, 28, 28);
+    font-family: monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+button {
+    border: none;
+    background-color: gray;
+    color: white;
+    width: 85px;
+}
+
+button:active {
+    background-color: white;
+    color: black;
+}
+
+img {
+    background-color: red; 
+    width: 200px;
+    height: 200px;
+}
+
+.hp_id_container {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 10px;
+}
