@@ -4,7 +4,7 @@ import { reloadAndDisable } from "./reload.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     // Constants
-    const chanceDef = 0.05; // Default capture chance (10%)
+    const chanceDef = 0.05; // Default capture chance (5%)
     const clampMax = 0.75; // Difference between max chance (80%) and default chance (10%)
     const barHeight = 349;
 
